@@ -13,7 +13,7 @@ find_package(SFML 3.0 REQUIRED COMPONENTS Graphics Window System Network)
 
 set(src
     main.cpp
- "World.h" "World.cpp")
+ "World.h" "World.cpp" "Player.h" "Player.cpp")
 
 add_executable(${PROJECT_NAME} ${src})
 

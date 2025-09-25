@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "World.h"
+#include "Player.h"
 
 int main()
 {
@@ -9,6 +10,10 @@ int main()
     World world;
     world.init("assets/map.json");
 
+    Player player;
+
+    sf::Mouse::setPosition(window.getPosition() + sf::Vector2i(window.getSize().x / 2, window.getSize().y / 2));
+
     while (window.isOpen())
     {
         while (const std::optional event = window.pollEvent())
@@ -17,8 +22,14 @@ int main()
                 window.close();
         }
 
+        player.Rotation(window);
+        player.Move();
+
         window.clear();
+
         world.drawMiniMap(window);
+        player.drawMiniMap(window);
+
         window.display();
     }
 }
