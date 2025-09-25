@@ -1,10 +1,13 @@
 #include <SFML/Graphics.hpp>
+#include "World.h"
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode({ 200, 200 }), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+    std::setlocale(LC_ALL, "RU");
+    sf::RenderWindow window(sf::VideoMode({ 1000, 600 }), "Pseudo 3D Engine!");
+
+    World world;
+    world.init("assets/map.json");
 
     while (window.isOpen())
     {
@@ -15,7 +18,7 @@ int main()
         }
 
         window.clear();
-        window.draw(shape);
+        world.drawMiniMap(window);
         window.display();
     }
 }
