@@ -14,6 +14,8 @@ int main()
 
     sf::Mouse::setPosition(window.getPosition() + sf::Vector2i(window.getSize().x / 2, window.getSize().y / 2));
 
+    sf::View view;
+
     while (window.isOpen())
     {
         while (const std::optional event = window.pollEvent())
@@ -22,10 +24,16 @@ int main()
                 window.close();
         }
 
-        player.Rotation(window);
+        view.setSize((sf::Vector2f)window.getSize());
+        view.setCenter(sf::Vector2f(window.getSize().x/2, window.getSize().y / 2));
+
+        if(sf::Mouse::isButtonPressed(sf::Mouse::Button::Right)) player.Rotation(window);
         player.Move();
 
+        window.setView(view);
         window.clear();
+
+        world.drawView(player, window);
 
         world.drawMiniMap(window);
         player.drawMiniMap(window);

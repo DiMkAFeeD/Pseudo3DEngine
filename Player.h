@@ -12,12 +12,18 @@ private:
 	
 	float defaultSpeed = 25;
 	float speed = 0;
-	float sensity = 15;
+	float sensity = 25;
 
 	sf::ConvexShape playerShape;
+
+	sf::Angle FOV = sf::degrees(90);
 
 public:
 	void Move();
 	void Rotation(sf::RenderWindow& window);
 	void drawMiniMap(sf::RenderWindow& window);
+
+	sf::Vector2f getPosition() { return position; }
+	sf::Angle getRotation() { return rotation; }
+	sf::Angle getFOV() { return FOV; }
 };

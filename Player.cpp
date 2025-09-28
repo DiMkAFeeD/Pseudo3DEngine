@@ -5,8 +5,8 @@ void Player::Move()
 	float deltaTime = clock.restart().asSeconds();
 	speed = defaultSpeed * deltaTime;
 
-	float rot = sf::Angle(rotation + sf::degrees(90)).asRadians();
-	float sideRot = sf::Angle(rotation + sf::degrees(180)).asRadians();
+	float rot = sf::Angle(rotation + sf::degrees(0)).asRadians();
+	float sideRot = sf::Angle(rotation + sf::degrees(90)).asRadians();
 
 	float dX = 0, dY = 0;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)) {
@@ -46,11 +46,11 @@ void Player::Rotation(sf::RenderWindow& window)
 void Player::drawMiniMap(sf::RenderWindow& window) {
 	playerShape.setFillColor(sf::Color::Green);
 	playerShape.setPointCount(3);
-	playerShape.setPoint(0, sf::Vector2f(0, 20));
-	playerShape.setPoint(1, sf::Vector2f(10, -10));
-	playerShape.setPoint(2, sf::Vector2f(-10, -10));
+	playerShape.setPoint(0, sf::Vector2f(0, 10));
+	playerShape.setPoint(1, sf::Vector2f(5, -5));
+	playerShape.setPoint(2, sf::Vector2f(-5, -5));
 
 	playerShape.setPosition(position);
-	playerShape.setRotation(rotation);
+	playerShape.setRotation(rotation - sf::degrees(90));
 	window.draw(playerShape);
 }
