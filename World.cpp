@@ -122,7 +122,7 @@ void World::drawView(Player& player, sf::RenderWindow& window)
     sf::Angle startAngle = player.getRotation() - FOV / 2;
     int numLines = window.getSize().x;
     sf::Angle stepAngle = FOV / numLines;
-    float distanceView = 100;
+    float distanceView = 150;
 
     for (int i = 0; i < numLines; i++) {
         sf::Angle angleRay = startAngle + stepAngle * i;

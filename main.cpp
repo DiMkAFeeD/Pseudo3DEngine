@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "World.h"
 #include "Player.h"
+#include "Skybox.h"
 
 int main()
 {
@@ -11,6 +12,7 @@ int main()
     world.init("assets/map.json");
 
     Player player;
+    SkyBox skybox("assets/sky.png", sf::Color(150, 120, 90));
 
     sf::Mouse::setPosition(window.getPosition() + sf::Vector2i(window.getSize().x / 2, window.getSize().y / 2));
 
@@ -32,6 +34,8 @@ int main()
 
         window.setView(view);
         window.clear();
+
+        skybox.draw(window, player);
 
         world.drawView(player, window);
 
